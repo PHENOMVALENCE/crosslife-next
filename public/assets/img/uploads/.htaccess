@@ -1,0 +1,26 @@
+# Deny execution of scripts in the uploads tree (Apache / LiteSpeed).
+<IfModule mod_authz_core.c>
+  <FilesMatch "(?i)\.(php|phtml|php3|php4|php5|phar|cgi|pl|py|jsp|asp|aspx)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <FilesMatch "(?i)\.(php|phtml|php3|php4|php5|phar|cgi|pl|py|jsp|asp|aspx)$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>
+
+Options -ExecCGI -Indexes
+RemoveHandler .php .phtml .php3 .php4 .php5 .phar
+RemoveType .php .phtml .php3 .php4 .php5 .phar
+
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+  php_flag engine off
+</IfModule>

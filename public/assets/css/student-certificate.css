@@ -1,0 +1,360 @@
+/**
+ * CrossLife Student Portal — Certificate of Completion
+ */
+
+.cl-student .cl-cert-page-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.cl-student .cl-cert-pending-icon {
+  font-size: 3.5rem;
+  color: var(--cl-brand);
+  margin-bottom: 1rem;
+}
+
+.cl-student .cl-cert-pending-card {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.cl-student .cl-cert-pending-card .card-body {
+  padding: 1.25rem 1.5rem;
+}
+
+.cl-student .cl-cert-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.certificate-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.certificate-frame {
+  position: relative;
+  background: linear-gradient(135deg, #fffef5 0%, #fff9e6 30%, #fffef5 50%, #fff9e6 70%, #fffef5 100%);
+  border: 3px solid #b8860b;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow:
+    0 0 0 1px #daa520,
+    0 0 0 4px #f5f0e0,
+    0 0 0 5px #b8860b,
+    0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.cert-corner {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-color: #b8860b;
+  z-index: 2;
+}
+
+.cert-corner-tl { top: 12px; left: 12px; border-top: 3px solid; border-left: 3px solid; }
+.cert-corner-tr { top: 12px; right: 12px; border-top: 3px solid; border-right: 3px solid; }
+.cert-corner-bl { bottom: 12px; left: 12px; border-bottom: 3px solid; border-left: 3px solid; }
+.cert-corner-br { bottom: 12px; right: 12px; border-bottom: 3px solid; border-right: 3px solid; }
+
+.cert-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cert-watermark-img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.certificate-inner {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 3rem;
+  text-align: center;
+}
+
+.cert-header {
+  margin-bottom: 1.5rem;
+}
+
+.cert-logo {
+  margin-bottom: 0.75rem;
+  border: 2px solid #daa520;
+  padding: 2px;
+}
+
+.cert-org-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.1rem;
+}
+
+.cert-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.cert-title-section {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.cert-decorative-line {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #b8860b, transparent);
+}
+
+.cert-title {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #b8860b;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.cert-body {
+  margin-bottom: 2rem;
+}
+
+.cert-preamble {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.cert-student-name {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  border-bottom: 2px solid #daa520;
+  display: inline-block;
+  padding: 0 2rem 0.3rem;
+}
+
+.cert-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.cert-program-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #b8860b;
+  margin-bottom: 0.5rem;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.cert-duration {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.cert-remarks {
+  font-size: 0.9rem;
+  color: #555;
+  max-width: 500px;
+  margin: 0.75rem auto 0;
+}
+
+.cert-footer {
+  margin-top: 2rem;
+}
+
+.cert-footer-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cert-footer-col {
+  flex: 1;
+  text-align: center;
+}
+
+.cert-seal-col {
+  flex: 0 0 auto;
+}
+
+.cert-signature-line {
+  width: 80%;
+  margin: 0 auto 0.5rem;
+  border-bottom: 1px solid #b8860b;
+}
+
+.cert-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.cert-sublabel {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cert-seal {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #b8860b;
+  background: linear-gradient(135deg, #fff9e6, #f5edd4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
+}
+
+.cert-seal-inner {
+  text-align: center;
+  color: #b8860b;
+}
+
+.cert-seal-inner i {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+.cert-seal-inner span {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cert-metadata {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0d5c0;
+}
+
+.cert-meta-item {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.cert-meta-item i {
+  color: #b8860b;
+  margin-right: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  .certificate-inner {
+    padding: 1.5rem 1rem;
+  }
+
+  .cert-title {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+
+  .cert-student-name {
+    font-size: 1.5rem;
+    padding: 0 1rem 0.2rem;
+  }
+
+  .cert-program-name {
+    font-size: 1.15rem;
+  }
+
+  .cert-org-name {
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+  }
+
+  .cert-footer-columns {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .cert-footer-col {
+    width: 80%;
+  }
+
+  .cert-corner {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cert-watermark-img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .cert-decorative-line {
+    max-width: 50px;
+  }
+
+  .cert-metadata {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+@media print {
+  .cl-student .no-print,
+  .cl-student .elms-sidebar,
+  .cl-student .elms-topbar,
+  .cl-student .elms-breadcrumb-wrap,
+  .cl-student .student-portal-footer {
+    display: none !important;
+  }
+
+  .cl-student .elms-main-wrap,
+  .cl-student .elms-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .certificate-container {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .certificate-frame {
+    box-shadow: none;
+    border: 3px solid #b8860b;
+    page-break-inside: avoid;
+  }
+}

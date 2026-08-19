@@ -1,0 +1,486 @@
+/**
+ * CrossLife Premium Design System
+ * Shared tokens & components — Notion / Linear / Vercel inspired
+ */
+
+:root {
+  /* Typography */
+  --cl-font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --cl-font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Surfaces */
+  --cl-bg: #fafafa;
+  --cl-bg-muted: #f4f4f5;
+  --cl-surface: #ffffff;
+  --cl-surface-raised: #ffffff;
+  --cl-border: #e4e4e7;
+  --cl-border-subtle: #f4f4f5;
+
+  /* Text */
+  --cl-text: #09090b;
+  --cl-text-secondary: #52525b;
+  --cl-text-muted: #a1a1aa;
+  --cl-text-inverse: #fafafa;
+
+  /* Brand — CrossLife orange */
+  --cl-brand: #c85716;
+  --cl-brand-hover: #a34612;
+  --cl-brand-subtle: #fff7ed;
+  --cl-brand-muted: #fed7aa;
+  --cl-brand-ring: rgba(200, 87, 22, 0.22);
+
+  /* Semantic */
+  --cl-success: #16a34a;
+  --cl-success-subtle: #f0fdf4;
+  --cl-warning: #ca8a04;
+  --cl-warning-subtle: #fefce8;
+  --cl-danger: #dc2626;
+  --cl-danger-subtle: #fef2f2;
+  --cl-info: #2563eb;
+  --cl-info-subtle: #eff6ff;
+
+  /* Layout — denser SaaS shell */
+  --cl-sidebar-width: 260px;
+  --cl-sidebar-collapsed: 72px;
+  --cl-header-height: 52px;
+  --cl-content-pad: 24px;
+  --cl-radius-sm: 6px;
+  --cl-radius: 8px;
+  --cl-radius-lg: 12px;
+  --cl-radius-xl: 16px;
+  --cl-radius-full: 9999px;
+
+  /* Elevation */
+  --cl-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --cl-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --cl-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --cl-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+
+  /* Motion */
+  --cl-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --cl-duration: 0.15s;
+
+  /* Dark sidebar */
+  --cl-sidebar-bg: #09090b;
+  --cl-sidebar-surface: #18181b;
+  --cl-sidebar-border: rgba(255, 255, 255, 0.06);
+  --cl-sidebar-text: #a1a1aa;
+  --cl-sidebar-text-hover: #fafafa;
+  --cl-sidebar-active-bg: rgba(200, 87, 22, 0.12);
+  --cl-sidebar-active-text: #fb923c;
+}
+
+/* ------------------------------------------------------------------ Base */
+.cl-admin,
+.cl-student {
+  font-family: var(--cl-font);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--cl-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cl-admin h1, .cl-admin h2, .cl-admin h3, .cl-admin h4, .cl-admin h5, .cl-admin h6,
+.cl-student h1, .cl-student h2, .cl-student h3, .cl-student h4, .cl-student h5, .cl-student h6 {
+  font-family: var(--cl-font-display);
+  letter-spacing: -0.02em;
+  color: var(--cl-text);
+}
+
+/* ------------------------------------------------------------------ Cards */
+.cl-card,
+.cl-admin .card,
+.cl-student .student-card.card {
+  background: var(--cl-surface);
+  border: 1px solid var(--cl-border);
+  border-radius: var(--cl-radius-lg);
+  box-shadow: var(--cl-shadow-xs);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.cl-admin .card-header,
+.cl-student .student-card .card-header {
+  background: transparent;
+  border-bottom: 1px solid var(--cl-border-subtle);
+  padding: 0.875rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--cl-text);
+}
+
+.cl-admin .card-body,
+.cl-student .student-card .card-body {
+  padding: 1.25rem; /* 20px */
+}
+
+.cl-card--flat {
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------------ Buttons */
+.cl-admin .btn-primary,
+.cl-student .btn-primary {
+  background: var(--cl-brand);
+  border-color: var(--cl-brand);
+  font-weight: 500;
+  border-radius: var(--cl-radius);
+  padding: 0.5rem 1rem;
+  box-shadow: var(--cl-shadow-xs);
+  transition: background var(--cl-duration) var(--cl-ease), transform var(--cl-duration) var(--cl-ease);
+}
+
+.cl-admin .btn-primary:hover,
+.cl-student .btn-primary:hover {
+  background: var(--cl-brand-hover);
+  border-color: var(--cl-brand-hover);
+  transform: translateY(-1px);
+}
+
+.cl-admin .btn-outline-primary,
+.cl-student .btn-outline-primary {
+  color: var(--cl-brand);
+  border-color: var(--cl-border);
+  border-radius: var(--cl-radius);
+  font-weight: 500;
+}
+
+.cl-admin .btn-outline-primary:hover,
+.cl-student .btn-outline-primary:hover {
+  background: var(--cl-brand-subtle);
+  border-color: var(--cl-brand-muted);
+  color: var(--cl-brand-hover);
+}
+
+.cl-admin .btn,
+.cl-student .btn {
+  border-radius: var(--cl-radius);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.cl-admin .btn-sm,
+.cl-student .btn-sm {
+  border-radius: var(--cl-radius-sm);
+  padding: 0.35rem 0.75rem;
+}
+
+/* ELMS accent buttons → brand */
+.btn-elms-accent,
+.btn-accent {
+  background: var(--cl-brand) !important;
+  border: none !important;
+  border-radius: var(--cl-radius) !important;
+  font-weight: 500 !important;
+  color: #fff !important;
+}
+
+.btn-elms-accent:hover,
+.btn-accent:hover {
+  background: var(--cl-brand-hover) !important;
+  color: #fff !important;
+}
+
+.btn-outline-elms {
+  border-color: var(--cl-border) !important;
+  color: var(--cl-brand) !important;
+  border-radius: var(--cl-radius) !important;
+}
+
+.btn-outline-elms:hover {
+  background: var(--cl-brand-subtle) !important;
+  border-color: var(--cl-brand-muted) !important;
+}
+
+/* ------------------------------------------------------------------ Forms */
+.cl-admin .form-control,
+.cl-admin .form-select,
+.cl-student .form-control,
+.cl-student .form-select {
+  border: 1px solid var(--cl-border);
+  border-radius: var(--cl-radius);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.875rem;
+  background: var(--cl-surface);
+  transition: border-color var(--cl-duration), box-shadow var(--cl-duration);
+}
+
+.cl-admin .form-control:focus,
+.cl-admin .form-select:focus,
+.cl-student .form-control:focus,
+.cl-student .form-select:focus {
+  border-color: var(--cl-brand);
+  box-shadow: 0 0 0 3px var(--cl-brand-ring);
+}
+
+.cl-admin .form-label,
+.cl-student .form-label {
+  font-weight: 500;
+  font-size: 0.8125rem;
+  color: var(--cl-text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.cl-admin .form-control-sm,
+.cl-admin .form-select-sm {
+  border-radius: var(--cl-radius-sm);
+}
+
+/* ------------------------------------------------------------------ Tables */
+.cl-admin .table {
+  --bs-table-bg: transparent;
+  font-size: 0.875rem;
+}
+
+.cl-admin .table thead th {
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cl-text-muted);
+  border-bottom: 1px solid var(--cl-border);
+  padding: 0.75rem 1rem;
+  background: var(--cl-bg-muted);
+}
+
+.cl-admin .table tbody td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--cl-border-subtle);
+  vertical-align: middle;
+}
+
+.cl-admin .table-hover tbody tr:hover {
+  background: var(--cl-bg-muted);
+}
+
+/* ------------------------------------------------------------------ Badges */
+.cl-admin .badge,
+.cl-student .badge {
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  padding: 0.3em 0.55em;
+  border-radius: var(--cl-radius-sm);
+}
+
+.badge-admin {
+  background: var(--cl-brand-subtle) !important;
+  color: var(--cl-brand) !important;
+  border: 1px solid var(--cl-brand-muted);
+}
+
+/* ------------------------------------------------------------------ Alerts */
+.cl-admin .alert,
+.cl-student .alert {
+  border: 1px solid transparent;
+  border-radius: var(--cl-radius);
+  font-size: 0.875rem;
+  padding: 0.85rem 1rem;
+}
+
+.cl-admin .alert-success,
+.cl-student .alert-success {
+  background: var(--cl-success-subtle);
+  border-color: rgba(22, 163, 74, 0.2);
+  color: #15803d;
+}
+
+.cl-admin .alert-danger,
+.cl-student .alert-danger {
+  background: var(--cl-danger-subtle);
+  border-color: rgba(220, 38, 38, 0.2);
+  color: #b91c1c;
+}
+
+.cl-admin .alert-warning,
+.cl-student .alert-warning {
+  background: var(--cl-warning-subtle);
+  border-color: rgba(202, 138, 4, 0.2);
+  color: #a16207;
+}
+
+.cl-admin .alert-info,
+.cl-student .alert-info {
+  background: var(--cl-info-subtle);
+  border-color: rgba(37, 99, 235, 0.2);
+  color: #1d4ed8;
+}
+
+/* ------------------------------------------------------------------ Nav tabs */
+.cl-admin .nav-tabs {
+  border-bottom: 1px solid var(--cl-border);
+  gap: 0.25rem;
+}
+
+.cl-admin .nav-tabs .nav-link {
+  border: none;
+  border-radius: var(--cl-radius) var(--cl-radius) 0 0;
+  color: var(--cl-text-muted);
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.65rem 1rem;
+}
+
+.cl-admin .nav-tabs .nav-link:hover {
+  color: var(--cl-text);
+  background: var(--cl-bg-muted);
+}
+
+.cl-admin .nav-tabs .nav-link.active {
+  color: var(--cl-brand);
+  background: transparent;
+  border-bottom: 2px solid var(--cl-brand);
+  margin-bottom: -1px;
+}
+
+/* ------------------------------------------------------------------ Page header */
+.cl-page-header {
+  margin-bottom: 1.5rem;
+}
+
+.cl-page-header h1,
+.cl-page-header .cl-page-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.025em;
+}
+
+.cl-page-header .cl-page-subtitle {
+  color: var(--cl-text-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------ Stat cards */
+.cl-stat-card {
+  background: var(--cl-surface);
+  border: 1px solid var(--cl-border);
+  border-radius: var(--cl-radius-lg);
+  padding: 1.25rem;
+  transition: box-shadow var(--cl-duration), border-color var(--cl-duration), transform var(--cl-duration);
+  height: 100%;
+}
+
+.cl-stat-card:hover {
+  box-shadow: var(--cl-shadow);
+  border-color: var(--cl-brand-muted);
+  transform: translateY(-2px);
+}
+
+.cl-stat-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--cl-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  background: var(--cl-brand-subtle);
+  color: var(--cl-brand);
+  flex-shrink: 0;
+}
+
+.cl-stat-card__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cl-text-muted);
+}
+
+.cl-stat-card__value {
+  font-family: var(--cl-font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.cl-stat-card__meta {
+  font-size: 0.8125rem;
+  color: var(--cl-brand);
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------------ DataTables premium */
+.cl-admin .dataTables_wrapper .dataTables_filter input {
+  border: 1px solid var(--cl-border);
+  border-radius: var(--cl-radius-full);
+  padding: 0.4rem 1rem;
+  font-size: 0.875rem;
+  background: var(--cl-surface);
+  margin-left: 0.5rem;
+}
+
+.cl-admin .dataTables_wrapper .dataTables_filter input:focus {
+  outline: none;
+  border-color: var(--cl-brand);
+  box-shadow: 0 0 0 3px var(--cl-brand-ring);
+}
+
+.cl-admin .dataTables_wrapper .dt-buttons .btn.btn-outline-secondary {
+  border-color: var(--cl-border);
+  color: var(--cl-text-secondary);
+  border-radius: var(--cl-radius-sm);
+}
+
+.cl-admin .dataTables_wrapper .dt-buttons .btn.btn-outline-secondary:hover {
+  background: var(--cl-brand-subtle);
+  border-color: var(--cl-brand-muted);
+  color: var(--cl-brand);
+}
+
+.cl-admin .page-item .page-link {
+  border-radius: var(--cl-radius-sm);
+  margin: 0 2px;
+  border-color: var(--cl-border);
+  color: var(--cl-text-secondary);
+  font-size: 0.8125rem;
+}
+
+.cl-admin .page-item.active .page-link {
+  background: var(--cl-brand);
+  border-color: var(--cl-brand);
+}
+
+/* ------------------------------------------------------------------ Bulk toolbar */
+.cl-bulk-toolbar {
+  background: var(--cl-bg-muted);
+  border: 1px solid var(--cl-border);
+  border-radius: var(--cl-radius);
+  padding: 0.65rem 0.85rem;
+}
+
+/* ------------------------------------------------------------------ Empty state */
+.cl-empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--cl-text-muted);
+}
+
+.cl-empty-state i {
+  font-size: 2.5rem;
+  opacity: 0.35;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* ------------------------------------------------------------------ Scrollbar */
+.cl-admin ::-webkit-scrollbar,
+.cl-student ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.cl-admin ::-webkit-scrollbar-thumb,
+.cl-student ::-webkit-scrollbar-thumb {
+  background: var(--cl-border);
+  border-radius: 3px;
+}
+
+.cl-admin ::-webkit-scrollbar-thumb:hover,
+.cl-student ::-webkit-scrollbar-thumb:hover {
+  background: var(--cl-text-muted);
+}

@@ -1,0 +1,412 @@
+/**
+ * CrossLife — standalone 404 page (public + student variants)
+ * Self-contained: does not depend on main.css
+ */
+
+:root {
+  --cl-404-bg: #12100e;
+  --cl-404-surface: rgba(28, 24, 21, 0.72);
+  --cl-404-border: rgba(255, 255, 255, 0.1);
+  --cl-404-text: rgba(255, 255, 255, 0.88);
+  --cl-404-muted: rgba(255, 255, 255, 0.58);
+  --cl-404-accent: #c85716;
+  --cl-404-accent-soft: #e8924f;
+  --cl-404-font: "Montserrat", system-ui, sans-serif;
+  --cl-404-heading: "Lato", Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ===================== PUBLIC 404 PAGE ===================== */
+
+.cl-404-page {
+  min-height: 100dvh;
+  font-family: var(--cl-404-font);
+  color: var(--cl-404-text);
+  background: var(--cl-404-bg);
+  overflow-x: hidden;
+  position: relative;
+}
+
+.cl-404-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(155deg, rgba(18, 16, 14, 0.94) 0%, rgba(18, 16, 14, 0.82) 42%, rgba(200, 87, 22, 0.22) 100%),
+    url("../img/_MG_5281.jpg") center / cover no-repeat;
+  filter: saturate(0.85);
+}
+
+.cl-404-glow {
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cl-404-glow--left {
+  top: -120px;
+  left: -100px;
+  background: #c85716;
+}
+
+.cl-404-glow--right {
+  bottom: -140px;
+  right: -80px;
+  background: #5c3d2e;
+}
+
+.cl-404-header,
+.cl-404-main,
+.cl-404-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.cl-404-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem max(1.25rem, env(safe-area-inset-right)) 0 max(1.25rem, env(safe-area-inset-left));
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cl-404-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.cl-404-brand img {
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.cl-404-brand__text {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--cl-404-accent-soft);
+}
+
+.cl-404-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+}
+
+.cl-404-nav a {
+  color: var(--cl-404-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.cl-404-nav a:hover {
+  color: #fff;
+}
+
+.cl-404-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100dvh - 160px);
+  padding: 2rem max(1.25rem, env(safe-area-inset-right)) 3rem max(1.25rem, env(safe-area-inset-left));
+}
+
+.cl-404-panel {
+  width: min(100%, 680px);
+  text-align: center;
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.75rem);
+  border-radius: 24px;
+  border: 1px solid var(--cl-404-border);
+  background: var(--cl-404-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.cl-404-eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cl-404-accent-soft);
+}
+
+.cl-404-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  font-family: var(--cl-404-heading);
+  font-size: clamp(7rem, 28vw, 11rem);
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.cl-404-icon {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--cl-404-accent-soft);
+  background: rgba(200, 87, 22, 0.18);
+  border: 1px solid rgba(200, 87, 22, 0.35);
+  box-shadow: 0 8px 28px rgba(200, 87, 22, 0.2);
+  position: relative;
+}
+
+.cl-404-title {
+  margin: 0 0 0.85rem;
+  font-family: var(--cl-404-heading);
+  font-size: clamp(1.65rem, 4.5vw, 2.35rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+  position: relative;
+}
+
+.cl-404-lead {
+  margin: 0 auto 2rem;
+  max-width: 34rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--cl-404-muted);
+  position: relative;
+}
+
+.cl-404-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  position: relative;
+}
+
+.cl-404-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 46px;
+  padding: 0.7rem 1.15rem;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cl-404-btn:hover {
+  transform: translateY(-2px);
+}
+
+.cl-404-btn--primary {
+  background: linear-gradient(135deg, #d4611f 0%, #b34a12 100%);
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(200, 87, 22, 0.35);
+}
+
+.cl-404-btn--primary:hover {
+  box-shadow: 0 14px 34px rgba(200, 87, 22, 0.45);
+  color: #fff;
+}
+
+.cl-404-btn--ghost {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.cl-404-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+.cl-404-quote {
+  margin: 2rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.cl-404-quote p {
+  margin: 0 0 0.35rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+}
+
+.cl-404-quote cite {
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--cl-404-accent-soft);
+}
+
+.cl-404-footer {
+  text-align: center;
+  padding: 0 1.25rem 1.75rem;
+}
+
+.cl-404-footer p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+@media (max-width: 640px) {
+  .cl-404-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cl-404-nav {
+    width: 100%;
+  }
+
+  .cl-404-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cl-404-btn {
+    width: 100%;
+  }
+}
+
+/* ===================== STUDENT PORTAL VARIANT ===================== */
+
+.cl-error-page {
+  min-height: calc(100dvh - 140px);
+  display: flex;
+  align-items: center;
+  padding: 2rem 0 3rem;
+}
+
+.cl-error-card {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 20px;
+  padding: clamp(2rem, 4vw, 2.75rem) clamp(1.25rem, 4vw, 2rem);
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.08);
+}
+
+.cl-error-code {
+  font-family: "Lato", Georgia, serif;
+  font-size: clamp(4rem, 16vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(200, 87, 22, 0.15);
+  margin-bottom: 0.25rem;
+}
+
+.cl-error-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #c85716;
+  background: rgba(200, 87, 22, 0.1);
+  border: 1px solid rgba(200, 87, 22, 0.22);
+}
+
+.cl-error-title {
+  font-family: "Lato", Georgia, serif;
+  font-size: clamp(1.4rem, 4vw, 1.85rem);
+  font-weight: 700;
+  color: #110a06;
+  margin-bottom: 0.75rem;
+}
+
+.cl-error-text {
+  color: #5c534d;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+.cl-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+
+.cl-error-actions .btn {
+  min-height: 44px;
+  padding: 0.65rem 1.2rem;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.cl-error-actions .btn-primary {
+  background: #c85716;
+  border-color: #c85716;
+}
+
+.cl-error-actions .btn-primary:hover {
+  background: #a84612;
+  border-color: #a84612;
+}
+
+.student-portal .cl-error-page {
+  min-height: 50vh;
+}
+
+@media (max-width: 576px) {
+  .cl-error-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cl-error-actions .btn {
+    width: 100%;
+  }
+}
