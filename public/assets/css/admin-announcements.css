@@ -1,0 +1,290 @@
+/**
+ * Admin — Announcements composer
+ */
+
+.cl-ann-page .cl-ann-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cl-ann-stat {
+  border: 1px solid var(--cl-border, #e4e4e7);
+  border-radius: var(--cl-radius, 12px);
+  background: #fff;
+  padding: 1rem;
+  height: 100%;
+}
+
+.cl-ann-stat__label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #71717a;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.cl-ann-stat__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #18181b;
+  line-height: 1.2;
+}
+
+.cl-ann-panel {
+  border: 1px solid var(--cl-border, #e4e4e7);
+  border-radius: var(--cl-radius, 12px);
+  background: #fff;
+  overflow: hidden;
+}
+
+.cl-ann-panel__head {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--cl-border, #e4e4e7);
+  background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
+}
+
+.cl-ann-panel__head h2 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin: 0;
+  color: #18181b;
+}
+
+.cl-ann-panel__head p {
+  font-size: 0.8125rem;
+  color: #71717a;
+  margin: 0.25rem 0 0;
+}
+
+.cl-ann-panel__body {
+  padding: 1.25rem;
+}
+
+.cl-ann-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.65rem;
+}
+
+.cl-ann-audience-option {
+  position: relative;
+  display: block;
+  margin: 0;
+  cursor: pointer;
+}
+
+.cl-ann-audience-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cl-ann-audience-card {
+  border: 1.5px solid #e4e4e7;
+  border-radius: 10px;
+  padding: 0.85rem 0.9rem;
+  background: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  height: 100%;
+}
+
+.cl-ann-audience-option input:checked + .cl-ann-audience-card {
+  border-color: #c85716;
+  background: rgba(200, 87, 22, 0.04);
+  box-shadow: 0 0 0 1px rgba(200, 87, 22, 0.15);
+}
+
+.cl-ann-audience-card__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(200, 87, 22, 0.1);
+  color: #c85716;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.cl-ann-audience-card__title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #18181b;
+  margin: 0 0 0.15rem;
+}
+
+.cl-ann-audience-card__meta {
+  font-size: 0.6875rem;
+  color: #71717a;
+  margin: 0;
+}
+
+.cl-ann-subpanel {
+  border: 1px solid #e4e4e7;
+  border-radius: 10px;
+  background: #fafafa;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.cl-ann-student-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.cl-ann-student-toolbar .form-control {
+  max-width: 280px;
+}
+
+.cl-ann-student-list {
+  max-height: 280px;
+  overflow-y: auto;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cl-ann-student-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #f4f4f5;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.cl-ann-student-row:last-child {
+  border-bottom: none;
+}
+
+.cl-ann-student-row:hover {
+  background: #fafafa;
+}
+
+.cl-ann-student-row.is-selected {
+  background: rgba(200, 87, 22, 0.06);
+}
+
+.cl-ann-student-row input[type="checkbox"] {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.cl-ann-student-row__info {
+  min-width: 0;
+  flex: 1;
+}
+
+.cl-ann-student-row__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #18181b;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cl-ann-student-row__email {
+  font-size: 0.6875rem;
+  color: #71717a;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cl-ann-student-row__badge {
+  flex-shrink: 0;
+  font-size: 0.625rem;
+}
+
+.cl-ann-recipient-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #18181b;
+  color: #fff;
+  border-radius: 10px;
+  margin-top: 1.25rem;
+}
+
+.cl-ann-recipient-preview__count {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.cl-ann-recipient-preview__label {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.cl-ann-history-item {
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid #f4f4f5;
+}
+
+.cl-ann-history-item:last-child {
+  border-bottom: none;
+}
+
+.cl-ann-history-item__subject {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #18181b;
+  margin: 0 0 0.35rem;
+  line-height: 1.35;
+}
+
+.cl-ann-history-item__meta {
+  font-size: 0.6875rem;
+  color: #71717a;
+  margin: 0;
+}
+
+.cl-ann-history-item__badge {
+  font-size: 0.625rem;
+  margin-top: 0.35rem;
+}
+
+.cl-ann-empty {
+  text-align: center;
+  padding: 2rem 1.25rem;
+  color: #71717a;
+}
+
+.cl-ann-empty i {
+  font-size: 1.75rem;
+  opacity: 0.35;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.cl-ann-compose-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e4e4e7;
+}
+
+.cl-ann-message-hint {
+  font-size: 0.75rem;
+  color: #71717a;
+  margin-top: 0.35rem;
+}

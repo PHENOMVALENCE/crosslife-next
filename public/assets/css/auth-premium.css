@@ -1,0 +1,798 @@
+/**
+ * CrossLife — Auth pages (split layout, role switch, register)
+ */
+
+.cl-auth--split {
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--cl-font, 'Inter', sans-serif);
+  background: #09090b;
+  color: #fafafa;
+  -webkit-font-smoothing: antialiased;
+  font-size: 0.875rem;
+}
+
+.cl-auth__page {
+  display: grid;
+  grid-template-columns: minmax(260px, 40%) 1fr;
+  min-height: 100vh;
+}
+
+/* ---- Brand panel ---- */
+.cl-auth__brand {
+  background:
+    linear-gradient(165deg, rgba(200, 87, 22, 0.95) 0%, #7c2d12 48%, #09090b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cl-auth__brand::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.25), transparent 50%);
+  pointer-events: none;
+}
+
+.cl-auth__brand-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.cl-auth__brand-home {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.cl-auth__brand-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3px;
+}
+
+.cl-auth__brand-name {
+  display: block;
+  font-family: var(--cl-font-display, 'DM Sans', sans-serif);
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.cl-auth__brand-tagline {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.88;
+  margin-top: 0.15rem;
+}
+
+.cl-auth__brand-body {
+  flex: 1;
+}
+
+.cl-auth__brand-lead {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 1.15rem;
+  max-width: 20rem;
+}
+
+.cl-auth__brand-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.cl-auth__brand-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.5rem;
+}
+
+.cl-auth__brand-features i {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.cl-auth__brand-foot {
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.cl-auth__brand-foot a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.75rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cl-auth__brand-foot a:hover {
+  color: #fff;
+}
+
+/* ---- Form panel ---- */
+.cl-auth__main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  background: #09090b;
+  position: relative;
+}
+
+.cl-auth__main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(200, 87, 22, 0.07), transparent),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(200, 87, 22, 0.04), transparent);
+  pointer-events: none;
+}
+
+.cl-auth__main-inner {
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Single compact card */
+.cl-auth__form-card {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 16px;
+  padding: 1.35rem 1.35rem 1.25rem;
+  box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.45);
+}
+
+.cl-auth__form-head {
+  margin-bottom: 1rem;
+}
+
+.cl-auth__form-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--cl-brand, #c85716);
+  background: rgba(200, 87, 22, 0.1);
+  border: 1px solid rgba(200, 87, 22, 0.22);
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--cl-radius-full, 9999px);
+  margin-bottom: 0.6rem;
+}
+
+.cl-auth__form-title {
+  font-family: var(--cl-font-display, 'DM Sans', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: #fafafa;
+  line-height: 1.25;
+}
+
+.cl-auth__form-subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  color: #71717a;
+  line-height: 1.45;
+}
+
+/* Role switch */
+.cl-auth__role-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background: #09090b;
+  border: 1px solid #27272a;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.cl-auth__role-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.5rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #71717a;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cl-auth__role-btn:hover {
+  color: #d4d4d8;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.cl-auth__role-btn.is-active {
+  background: var(--cl-brand, #c85716);
+  color: #fff;
+  box-shadow: 0 1px 6px rgba(200, 87, 22, 0.3);
+}
+
+.cl-auth__role-btn i {
+  font-size: 0.875rem;
+}
+
+.cl-auth__form-body {
+  min-height: 0;
+}
+
+.cl-auth__role-panel {
+  display: none;
+}
+
+.cl-auth__role-panel.is-active {
+  display: block;
+}
+
+.cl-auth__form-card .form-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #a1a1aa;
+  margin-bottom: 0.3rem;
+}
+
+.cl-auth__form-card .form-label .text-danger {
+  color: #f87171 !important;
+}
+
+.cl-auth__field {
+  margin-bottom: 0.75rem;
+}
+
+.cl-auth__field:last-of-type {
+  margin-bottom: 0.65rem;
+}
+
+.cl-auth__form-card .form-control {
+  background-color: #27272a !important;
+  border: 1px solid #3f3f46;
+  color: #fafafa !important;
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  min-height: 2.25rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  -webkit-text-fill-color: #fafafa;
+}
+
+.cl-auth__form-card .form-control::placeholder {
+  color: #52525b;
+  opacity: 1;
+}
+
+.cl-auth__form-card .form-control:hover {
+  border-color: #52525b;
+}
+
+.cl-auth__form-card .form-control:focus {
+  background-color: #27272a !important;
+  border-color: var(--cl-brand, #c85716);
+  color: #fafafa !important;
+  box-shadow: 0 0 0 2px var(--cl-brand-ring, rgba(200, 87, 22, 0.2));
+  outline: none;
+  -webkit-text-fill-color: #fafafa;
+}
+
+.cl-auth__form-card .form-control:-webkit-autofill,
+.cl-auth__form-card .form-control:-webkit-autofill:hover,
+.cl-auth__form-card .form-control:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #27272a inset !important;
+  -webkit-text-fill-color: #fafafa !important;
+  caret-color: #fafafa;
+  border-color: #3f3f46;
+}
+
+.cl-auth__hint {
+  font-size: 0.6875rem;
+  color: #71717a;
+  margin-top: 0.25rem;
+}
+
+.cl-auth__hint a {
+  color: #a1a1aa;
+  text-decoration: none;
+}
+
+.cl-auth__hint a:hover {
+  color: var(--cl-brand, #c85716);
+}
+
+.cl-auth__forgot {
+  margin-top: 0.6rem;
+}
+
+.cl-auth__forgot-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.4rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid rgba(200, 87, 22, 0.35);
+  border-radius: 10px;
+  background: rgba(200, 87, 22, 0.08);
+  color: #fafafa;
+  font-size: 0.95rem; /* ~15.2px */
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.cl-auth__forgot-link:hover,
+.cl-auth__forgot-link:focus-visible {
+  background: rgba(200, 87, 22, 0.16);
+  border-color: rgba(200, 87, 22, 0.6);
+  color: #fff;
+  transform: translateY(-1px);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cl-auth__forgot-link:focus-visible {
+  outline: 2px solid var(--cl-brand, #c85716);
+  outline-offset: 2px;
+}
+
+.cl-auth__recovery-card {
+  margin-top: 0.75rem;
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 16px;
+  padding: 1.15rem 1.15rem 1.1rem;
+  box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.35);
+}
+
+.cl-auth__recovery-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cl-brand, #c85716);
+  background: rgba(200, 87, 22, 0.1);
+  border: 1px solid rgba(200, 87, 22, 0.22);
+  padding: 0.35rem 0.7rem;
+  border-radius: 9999px;
+}
+
+.cl-auth__recovery-heading-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+
+.cl-auth__recovery-success-icon {
+  color: #15915f;
+  font-size: 1.35rem;
+}
+
+.cl-auth__recovery-title {
+  font-family: var(--cl-font-display, 'DM Sans', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fafafa;
+  text-transform: none;
+}
+
+.cl-auth__recovery-lead {
+  color: #71717a;
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.cl-auth__security-notice {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  padding-top: 0.85rem;
+  border-top: 1px solid #27272a;
+  color: #71717a;
+}
+
+.cl-auth__submit {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.55rem 0.85rem;
+  margin-top: 0.15rem;
+  background: var(--cl-brand, #c85716);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+  min-height: 2.35rem;
+}
+
+.cl-auth__submit:hover {
+  background: var(--cl-brand-hover, #a34612);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.cl-auth__submit i {
+  font-size: 0.875rem;
+}
+
+.cl-auth__divider {
+  display: flex;
+  align-items: center;
+  margin: 0.85rem 0;
+  color: #52525b;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cl-auth__divider::before,
+.cl-auth__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #3f3f46;
+}
+
+.cl-auth__divider span {
+  padding: 0 0.6rem;
+}
+
+.cl-auth__google {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  color: #d4d4d8;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  text-decoration: none;
+  transition: all 0.15s;
+  min-height: 2.35rem;
+}
+
+.cl-auth__google:hover {
+  background: #3f3f46;
+  border-color: #52525b;
+  color: #fff;
+}
+
+.cl-auth__note {
+  font-size: 0.75rem;
+  color: #71717a;
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(9, 9, 11, 0.5);
+  border-radius: 8px;
+  border: 1px solid #27272a;
+  line-height: 1.45;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.cl-auth__footer {
+  text-align: center;
+  margin-top: 0.85rem;
+  font-size: 0.8125rem;
+  color: #71717a;
+}
+
+.cl-auth__footer a {
+  color: var(--cl-brand, #c85716);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cl-auth__footer a:hover {
+  text-decoration: underline;
+}
+
+.cl-auth .alert {
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  border: 1px solid transparent;
+  margin-bottom: 0.75rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.cl-auth .alert-danger {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.22);
+  color: #fca5a5;
+}
+
+.cl-auth .alert-success {
+  background: rgba(22, 163, 74, 0.1);
+  border-color: rgba(22, 163, 74, 0.22);
+  color: #86efac;
+}
+
+.cl-auth .alert-warning {
+  background: rgba(202, 138, 4, 0.1);
+  border-color: rgba(202, 138, 4, 0.22);
+  color: #fde047;
+}
+
+.cl-auth__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem 0.45rem;
+  margin-top: 1rem;
+  padding-top: 0;
+  border-top: none;
+  font-size: 0.75rem;
+}
+
+.cl-auth__links a {
+  color: #52525b;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cl-auth__links a:hover {
+  color: #fb923c;
+}
+
+.cl-auth__links-sep {
+  color: #3f3f46;
+}
+
+.cl-auth__register-grid .cl-auth__field--half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 991.98px) {
+  .cl-auth__page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .cl-auth__brand {
+    min-height: auto;
+  }
+
+  .cl-auth__brand-inner {
+    padding: 1rem 1rem 1.15rem;
+  }
+
+  .cl-auth__brand-body,
+  .cl-auth__brand-foot {
+    display: none;
+  }
+
+  .cl-auth__brand-home {
+    margin-bottom: 0;
+  }
+
+  .cl-auth__brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cl-auth__main {
+    align-items: flex-start;
+    padding: 1rem 0.85rem 1.5rem;
+  }
+
+  .cl-auth__main-inner {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .cl-auth__form-card {
+    padding: 1.15rem 1.1rem 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cl-auth__register-grid .cl-auth__field--half {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .cl-auth__main-inner {
+    max-width: 100%;
+  }
+
+  .cl-auth__form-title {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .cl-auth__main {
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  .cl-auth__main-inner {
+    max-width: 360px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cl-auth__main-inner {
+    max-width: 380px;
+  }
+}
+
+/* ---- Password recovery (temporary password) card ---- */
+.cl-auth__recovery-card {
+  margin-top: 0.75rem;
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 16px;
+  padding: 1.15rem 1.15rem 1.1rem;
+  box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.35);
+}
+
+.cl-auth__recovery-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cl-brand, #c85716);
+  background: rgba(200, 87, 22, 0.1);
+  border: 1px solid rgba(200, 87, 22, 0.22);
+  padding: 0.35rem 0.7rem;
+  border-radius: 9999px;
+}
+
+.cl-auth__recovery-heading-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+
+.cl-auth__recovery-success-icon {
+  color: #15915f;
+  font-size: 1.35rem;
+}
+
+.cl-auth__recovery-title {
+  font-family: var(--cl-font-display, 'DM Sans', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fafafa;
+  text-transform: none;
+}
+
+.cl-auth__recovery-lead {
+  color: #71717a;
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.cl-auth__security-notice {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  padding-top: 0.85rem;
+  border-top: 1px solid #27272a;
+  color: #71717a;
+}
+
+/* Temporary password card */
+.cl-temp-pass-card {
+  margin-top: 1.1rem;
+  background: #0b1220;
+  border: 1px solid rgba(216, 169, 40, 0.7);
+  border-radius: 16px;
+  padding: 1rem 1rem 0.95rem;
+  overflow: hidden;
+}
+
+.cl-temp-pass-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #d8a928;
+}
+
+.cl-temp-pass-card__value {
+  margin-top: 0.9rem;
+}
+
+.cl-temp-pass-card__meta {
+  margin-top: 0.35rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+  text-align: center;
+  border-top: 1px solid rgba(39, 39, 42, 0.6);
+  padding-top: 0.7rem;
+}
+
+.cl-temp-pass-card__code {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 1.75rem; /* ~28px on desktop */
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.cl-temp-pass-card__actions {
+  margin-top: 1rem;
+}
+
+.cl-temp-pass-card__copy-btn {
+  width: 100%;
+  min-height: 44px;
+}
+
+.cl-temp-pass-card__copied {
+  margin-top: 0.7rem;
+  color: #15915f;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+@media (max-width: 430px) {
+  .cl-temp-pass-card__code {
+    font-size: 1.35rem; /* ~22px */
+    letter-spacing: 0.1em;
+  }
+}
